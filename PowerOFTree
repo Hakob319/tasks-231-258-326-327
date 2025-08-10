@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool PowerOfThree(int num, int *result) {
+    if (num <= 0) {
+        return false;
+    }
+
+    int count = 0;
+
+    while (num % 3 == 0) { // пока число делится на 3
+        num /= 3;
+        count++;
+    }
+
+    if (num == 1) { // если после делений осталась 1
+        *result = count;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+int main() {
+    int number;
+    int result;
+
+    printf("Input number: ");
+    scanf("%d", &number);
+
+    if (PowerOfThree(number, &result)) {
+        printf("%d = 3^%d\n", number, result);
+    } else {
+        printf("%d is false\n", number);
+    }
+
+    return 0;
+}
